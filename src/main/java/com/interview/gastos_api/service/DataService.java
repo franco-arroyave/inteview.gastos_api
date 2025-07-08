@@ -2,12 +2,14 @@ package com.interview.gastos_api.service;
 
 import com.interview.gastos_api.model.Empleado;
 import com.interview.gastos_api.model.Gasto;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DataService {
 
     private final List<Empleado> empleados = new ArrayList<>();
