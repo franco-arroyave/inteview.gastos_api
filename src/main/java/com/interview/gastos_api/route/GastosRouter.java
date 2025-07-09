@@ -17,9 +17,8 @@ public class GastosRouter {
     public RouterFunction<ServerResponse> Gastos(GastosHandler gastosHandler){
         return RouterFunctions
                 .route(GET("/gastosTotal"), gastosHandler::totalGastos)
-                .andRoute(GET("/empleados/", gastosHandler::listarGastos)
-                .andRoute(GET("/empleados/{id}"), gastosHandler::gastosEmpleado)
-                ;
+                .andRoute(GET("/empleados/"), gastosHandler::listarGastos)
+                .andRoute(GET("/empleados/{id}"), gastosHandler::gastosEmpleado);
     }
 
 }
