@@ -16,8 +16,10 @@ public class GastosRouter {
     @Bean
     public RouterFunction<ServerResponse> Gastos(GastosHandler gastosHandler){
         return RouterFunctions
-                .route(POST("/gastos"), gastosHandler::getGastos)
-                .andRoute(GET("/gastos/{id}"), gastosHandler::getGastosEmpleado);
+                .route(GET("/gastosTotal"), gastosHandler::totalGastos)
+                .andRoute(GET("/empleados/", gastosHandler::listarGastos)
+                .andRoute(GET("/empleados/{id}"), gastosHandler::gastosEmpleado)
+                ;
     }
 
 }
