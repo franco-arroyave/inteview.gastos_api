@@ -21,6 +21,10 @@ public class GastosHandler {
     @Autowired
     private DataService dataService;
 
+    public GastosHandler(DataService dataService) {
+        this.dataService = dataService;
+    }
+
     public Mono<ServerResponse> totalGastos(ServerRequest request) {
         return dataService.getGastos()
                 .reduce(0.0,(total,gasto)-> total + gasto.getMonto())
@@ -69,7 +73,7 @@ public class GastosHandler {
                             if(gastos.isEmpty()){
                                 return ServerResponse.noContent().build();
                             }
-                            return ServerResponse.ok().bodyValue(gastos);
+                            return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(gastos);
                         });
     }
 
@@ -84,7 +88,7 @@ public class GastosHandler {
                     if(gastos.isEmpty()){
                         return ServerResponse.noContent().build();
                     }
-                    return ServerResponse.ok().bodyValue(gastos);
+                    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(gastos);
                 });
 
     }

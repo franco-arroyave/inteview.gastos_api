@@ -10,5 +10,5 @@ public class Gasto {
     private Long id;
     private Long empleadoId;
     private LocalDate fecha;
-    private Long monto;
+    private double monto;
 }
